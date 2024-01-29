@@ -12,11 +12,11 @@ import org.springframework.web.client.RestTemplate;
 public class ProductController {
 
     @GetMapping
-    public ProductDTO searchProducts() {
+    public ProductDTO[] searchProducts() {
 
         RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity<ProductDTO> responseEntity = restTemplate.getForEntity("https://api.escuelajs.co/api/v1/", ProductDTO.class);
+        ResponseEntity<ProductDTO[]> responseEntity = restTemplate.getForEntity("https://api.escuelajs.co/api/v1/products", ProductDTO[].class);
 
         return responseEntity.getBody();
     }
